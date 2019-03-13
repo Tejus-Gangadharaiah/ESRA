@@ -13,6 +13,7 @@ int angry(void){
   irSense = input(7);
   switch(angryState){
     case START:
+      low(26);
       servo_speed(12, 200);
       servo_speed(13, -200);
       pause(100);
@@ -38,6 +39,7 @@ int angry(void){
         break;
       } 
       
+      low(26);
       servo_speed(12, -200);
       servo_speed(13, -200);
       pause(100);     
@@ -54,12 +56,13 @@ int angry(void){
           condition = 0;
           angryState = START;
         }          
-      }        
+      }    
       if (irSense == 1){
         angryState = MAD;
         break;
       } 
       
+      low(26);
       servo_speed(12, -100);
       servo_speed(13, -100);
       pause(100); 
@@ -76,8 +79,9 @@ int angry(void){
           condition = 0;
           angryState = START;
         }          
-      }        
-    
+      }  
+      
+      high(26);
       servo_speed(12, 255);
       servo_speed(13, 255);
       pause(100);
